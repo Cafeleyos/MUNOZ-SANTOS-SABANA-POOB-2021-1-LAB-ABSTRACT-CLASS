@@ -31,7 +31,12 @@ public abstract class BankAccount {
      * @param amount El monto a depositar.
      * @return Si la operación fue exitosa.
      */
-    public boolean deposit(double amount) {
+    public boolean deposit(double amount) throws Exception {
+        if (amount > 0) {
+            setBalance(balance+amount);
+            return true;
+        }
+        setBalance(-1);
         return false;
     }
 
