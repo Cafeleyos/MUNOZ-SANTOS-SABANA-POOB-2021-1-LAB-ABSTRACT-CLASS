@@ -10,11 +10,19 @@ public class Checking extends BankAccount {
         return DEPOSIT_DISCOUNT;
     }
 
+    @Override
+    public boolean deposit(double amount){
+        if (amount>DEPOSIT_DISCOUNT){
+            super.deposit(amount-DEPOSIT_DISCOUNT);
+            return true;
+        }
+        return false;
+    }
 
     public boolean processCheck(Check check){
         if (LocalDate.now().isBefore(check.getExpirationDate())){
             if(check.getAmount()>DEPOSIT_DISCOUNT) {
-                super.deposit(check.getAmount());
+                deposit(check.getAmount());
                 return true;
             }
         }

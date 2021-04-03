@@ -32,20 +32,11 @@ public abstract class BankAccount {
      * @return Si la operación fue exitosa.
      */
     public boolean deposit(double amount) {
-        boolean result = false;
-        if (getClass().getSimpleName().equals("Checking")){
-            if(amount>Checking.DEPOSIT_DISCOUNT) {
-                setBalance(this.balance + (amount - Checking.DEPOSIT_DISCOUNT));
-                result = true;
-            }
+        if (amount>0) {
+            setBalance(this.balance + amount);
+            return true;
         }
-        if (getClass().getSimpleName().equals("Savings")){
-            if (amount>Savings.DEPOSIT_DISCOUNT) {
-                setBalance(this.balance + (amount - Savings.DEPOSIT_DISCOUNT));
-                result = true;
-            }
-        }
-        return result;
+        return false;
     }
 
     /**
