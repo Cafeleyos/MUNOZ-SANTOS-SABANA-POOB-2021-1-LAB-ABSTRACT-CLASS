@@ -10,6 +10,7 @@ public class Employee {
     public UUID id;
     private String name, lastname;
     private Department department;
+    private BankAccount account;
 
     /**
      * Constructor for specifying name, lastname and department of the employee
@@ -46,5 +47,13 @@ public class Employee {
                 this.name, this.lastname, this.department.getName(),
                 Double.toString(calculateSalary()),
                 this.getClass().getSimpleName().equals("EmployeeForHours") ? "hours" : this.getClass().getSimpleName().equals("EmployeeForSalary") ? "salary" : "commissions");
+    }
+
+    public boolean addAccount(BankAccount account) {
+        if(this.account==null){
+            this.account = account;
+            return true;
+        }
+        return false;
     }
 }

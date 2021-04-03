@@ -16,6 +16,12 @@ public class EmployeeForCommission extends Employee{
         this.sales = sales;
     }
 
+    public EmployeeForCommission(String name, String lastname, Department department, int sales, BankAccount account) {
+        super(name, lastname, department);
+        this.sales = sales;
+        super.addAccount(account);
+    }
+
     /**
      * Calculates the final salary of this type of employee.
      * @return Salary

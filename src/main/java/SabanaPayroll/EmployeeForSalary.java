@@ -19,6 +19,12 @@ public class EmployeeForSalary extends Employee {
 
     }
 
+    public EmployeeForSalary(String name, String lastname, Department department, double salary,BankAccount account) {
+        super(name,lastname,department);
+        this.baseSalary = salary;
+        this.salary=calculateSalary();
+        super.addAccount(account);
+    }
     /**
      * Calculates the final salary of this type of employee.
      * @return Salary

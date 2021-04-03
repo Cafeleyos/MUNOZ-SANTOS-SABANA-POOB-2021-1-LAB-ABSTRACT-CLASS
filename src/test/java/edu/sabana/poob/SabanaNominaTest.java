@@ -3,6 +3,9 @@ package edu.sabana.poob;
 import SabanaPayroll.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import javax.swing.plaf.basic.BasicMenuBarUI;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SabanaNominaTest {
@@ -16,21 +19,28 @@ public class SabanaNominaTest {
     private static EmployeeForHours e3h;
     private static EmployeeForSalary s1,s2,s3;
     private static EmployeeForCommission c1,c2,c3;
+    private static BankAccount a1,a2,a3,a4,a5,a6;
 
     @BeforeAll
     public static void setUp() {
         sabanaPayRoll = new SabanaPayroll();
+        a1 = new Savings();
+        a2 = new Savings();
+        a3 = new Savings();
+        a4 = new Checking();
+        a5 = new Checking();
+        a6 = new Checking();
         I = new Department("ENGINEERING");
         V = new Department("SALES");
         F = new Department("FINANCES");
-        e1h = new EmployeeForHours("Juan", "Perez", F, 10);
-        e2h = new EmployeeForHours("Jorge", "Gomez", V, 15.9);
+        e1h = new EmployeeForHours("Juan", "Perez", F, 10,a1);
+        e2h = new EmployeeForHours("Jorge", "Gomez", V, 15.9,a4);
         e3h = new EmployeeForHours("Laura", "Beltran", I, 0);
-        s1 = new EmployeeForSalary("Pedro", "Perez", F, 10000.1);
-        s2 = new EmployeeForSalary("Camilo", "Munoz", V, 5000.6);
+        s1 = new EmployeeForSalary("Pedro", "Perez", F, 10000.1,a2);
+        s2 = new EmployeeForSalary("Camilo", "Munoz", V, 5000.6,a5);
         s3 = new EmployeeForSalary("David", "Colmenares", I, 24600.2);
-        c1 = new EmployeeForCommission("David","Guarnizo",F,100);
-        c2 = new EmployeeForCommission("Diana","Sanchez",V,200);
+        c1 = new EmployeeForCommission("David","Guarnizo",F,100,a3);
+        c2 = new EmployeeForCommission("Diana","Sanchez",V,200,a6);
         c3 = new EmployeeForCommission("Erika","Rojas",I,0);
         F.addEmployee(e1h);
         F.addEmployee(s1);
@@ -44,7 +54,8 @@ public class SabanaNominaTest {
         sabanaPayRoll.addDepartment(F);
         sabanaPayRoll.addDepartment(V);
         sabanaPayRoll.addDepartment(I);
-    }
+        }
+
 
     @Test
     public void shouldCalculateOnlySalary() {
@@ -109,6 +120,30 @@ public class SabanaNominaTest {
     @Test
     public void shouldPrintAllTheEmployees() {
         sabanaPayRoll.printPayroll();
+    }
+
+    @Test
+    public void shouldDepositWithoutErrors() {
+
+        assertTrue(a1.deposit(5000));
+        assertEquals(a1.getBalance(),3000);
+
+        assertTrue(a2.deposit(30000));
+        assertEquals(a2.getBalance(),28000);
+
+        assertTrue(a4.deposit(6000));
+        assertEquals(a4.getBalance(),1000);
+
+        assertTrue(a5.deposit(8000));
+        assertEquals(a5.getBalance(),3000);
+    }
+
+    @Test
+    public void shouldNotDeposit() {
+        assertFalse(a1.deposit(2000));
+        assertFalse(a2.deposit(1000));
+        assertFalse(a4.deposit(5000));
+        assertFalse(a5.deposit(1000));
     }
 
 

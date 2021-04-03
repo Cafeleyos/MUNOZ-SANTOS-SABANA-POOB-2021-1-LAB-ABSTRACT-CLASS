@@ -31,13 +31,21 @@ public abstract class BankAccount {
      * @param amount El monto a depositar.
      * @return Si la operación fue exitosa.
      */
-    public boolean deposit(double amount) throws Exception {
-        if (amount > 0) {
-            setBalance(balance+amount);
-            return true;
+    public boolean deposit(double amount) {
+        boolean result = false;
+        if (getClass().getSimpleName().equals("Checking")){
+            if(amount>Checking.DEPOSIT_DISCOUNT) {
+                setBalance(this.balance + (amount - Checking.DEPOSIT_DISCOUNT));
+                result = true;
+            }
         }
-        setBalance(-1);
-        return false;
+        if (getClass().getSimpleName().equals("Savings")){
+            if (amount>Savings.DEPOSIT_DISCOUNT) {
+                setBalance(this.balance + (amount - Savings.DEPOSIT_DISCOUNT));
+                result = true;
+            }
+        }
+        return result;
     }
 
     /**
@@ -52,6 +60,12 @@ public abstract class BankAccount {
      * @return Si la operación fue exitosa.
      */
     public boolean withdraw(double amount) {
+        if (amount<this.balance) {
+            if(amount + calculateTax(amount)<=balance) {
+                this.balance = balance- (amount+calculateTax(amount));
+                return true;
+            }
+        }
         return false;
     }
 
@@ -64,10 +78,11 @@ public abstract class BankAccount {
         return balance;
     }
 
-    private void setBalance(double balance) throws Exception {
-        if (balance < 0)
-            throw new Exception("Error en el deposito");
-
+    private void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public double calculateTax(double amount){
+        return (amount*TAX_4_1000)/1000;
     }
 }
