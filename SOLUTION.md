@@ -5,22 +5,16 @@
 ![](img/test-passed-circle-class.PNG)
 
 ## Parte II - Implementando herencia
-### Evidencia Diseño
+* La clase Employee puede ser abstracto.
 
-![](img/shaper-class-diagram.png)
-
-### Clase `Triangle` evidencia test
-![](img/test-passed-triangle-class.PNG)
-
-### Clase `Rectangle` evidencia test
-![](img/test-passed-rectangle-class.PNG)
- 
-### Clase `Square` evidencia test
-![](img/test-passed-square-class.PNG) 
+  ![](img/sabanapayroll-class-diagram-act.png)
+  ![](img/EmployeeTest.png)
 
 ## Parte III - Diseñando Herencia
 ### Diseño
+
 ![](img/shapes-class-2-diagram.png)
+
 
 ## Parte IV - Herencia en un contexto
 ### Diseños

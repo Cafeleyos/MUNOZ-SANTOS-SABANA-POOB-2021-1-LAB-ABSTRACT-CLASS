@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * Represents an employee
  */
-public class Employee {
+public abstract class Employee {
 
     public UUID id;
     private String name, lastname;
@@ -26,9 +26,7 @@ public class Employee {
      * Base method for calculating the salary
      * @return
      */
-    public double calculateSalary() {
-        return 0;
-    }
+    public abstract double calculateSalary();
 
     public UUID getId() {
         return id;
