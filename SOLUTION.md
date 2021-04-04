@@ -2,7 +2,6 @@
 ## Parte I - Corrigiendo `Shapes`
 
 
-![](img/test-passed-circle-class.PNG)
 
 ## Parte II - Corrigiendo `SabanaPayroll`
 * La clase Employee puede ser abstracta.
