@@ -26,9 +26,9 @@
 
 ## Parte V - Clases Abstractas Diseñando en un contexto
 
-###-Diagrama de clases
+### -Diagrama de clases
 ![](img/niversitybenefit-class-diagram .png)
-###-Diagramas de secuencia del método de `VacationBenefit`
+### -Diagramas de secuencia del método de `VacationBenefit`
 ![](img/retirewforvacations-sequence-diagram.png)
-###-Diagramas de secuencia del método de `CourseBenefit`
+### -Diagramas de secuencia del método de `CourseBenefit`
 ![](img/coursesBenefit-sequence-diagram.png)
