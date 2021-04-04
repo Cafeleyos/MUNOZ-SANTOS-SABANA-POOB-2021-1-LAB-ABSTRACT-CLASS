@@ -4,8 +4,6 @@ import SabanaPayroll.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import javax.swing.plaf.basic.BasicMenuBarUI;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SabanaNominaTest {
@@ -34,12 +32,12 @@ public class SabanaNominaTest {
         V = new Department("SALES");
         F = new Department("FINANCES");
         e1h = new EmployeeForHours("Juan", "Perez", F, 10,a1);
-        e2h = new EmployeeForHours("Jorge", "Gomez", V, 15.9,a4);
+        e2h = new EmployeeForHours("Jorge", "Gomez", V, 15.9,a2);
         e3h = new EmployeeForHours("Laura", "Beltran", I, 0);
-        s1 = new EmployeeForSalary("Pedro", "Perez", F, 10000.1,a2);
-        s2 = new EmployeeForSalary("Camilo", "Munoz", V, 5000.6,a5);
+        s1 = new EmployeeForSalary("Pedro", "Perez", F, 10000.1,a3);
+        s2 = new EmployeeForSalary("Camilo", "Munoz", V, 5000.6,a4);
         s3 = new EmployeeForSalary("David", "Colmenares", I, 24600.2);
-        c1 = new EmployeeForCommission("David","Guarnizo",F,100,a3);
+        c1 = new EmployeeForCommission("David","Guarnizo",F,100,a5);
         c2 = new EmployeeForCommission("Diana","Sanchez",V,200,a6);
         c3 = new EmployeeForCommission("Erika","Rojas",I,0);
         F.addEmployee(e1h);
@@ -123,30 +121,42 @@ public class SabanaNominaTest {
     }
 
     @Test
-    public void shouldDepositWithoutErrors() {
+    public void shouldGetBalanceOfAnEmployee() {
+        assertTrue(sabanaPayRoll.depositToEmployee(e1h.getId(), 1200000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(e1h.getId()), 1198000.0);
+        assertTrue(sabanaPayRoll.depositToEmployee(e1h.getId(), 20000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(e1h.getId()), 1216000.0);
 
-        assertTrue(a1.deposit(5000));
-        assertEquals(a1.getBalance(),3000);
-
-        assertTrue(a2.deposit(30000));
-        assertEquals(a2.getBalance(),28000);
-
-        assertTrue(a4.deposit(6000));
-        assertEquals(a4.getBalance(),1000);
-
-        assertTrue(a5.deposit(8000));
-        assertEquals(a5.getBalance(),3000);
     }
 
     @Test
-    public void shouldNotDeposit() {
-        assertFalse(a1.deposit(2000));
-        assertFalse(a2.deposit(1000));
-        assertFalse(a4.deposit(5000));
-        assertFalse(a5.deposit(1000));
+    public void shouldDepositToAnEmployeeIfSatisfiesTheAccountRequirements() {
+
+        assertTrue(sabanaPayRoll.depositToEmployee(e2h.getId(), 1200000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(e2h.getId()),1198000.0);
+
+        assertTrue(sabanaPayRoll.depositToEmployee(s2.getId(), 400000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(s2.getId()),395000.0);
+
+        assertFalse(sabanaPayRoll.depositToEmployee(c1.getId(), 5000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(c1.getId()),0);
+
+        assertFalse(sabanaPayRoll.depositToEmployee(s1.getId(), 2000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(s1.getId()),0);
     }
 
 
+/**
+    @Test
+    public void shouldGetCorrectlyTheBalanceOfAllEmployees(){
+        sabanaPayRoll.depositToEmployee(e1h.getId(), 1200000);
+        sabanaPayRoll.depositToEmployee(e2h.getId(), 3000000);
+        sabanaPayRoll.depositToEmployee(s1.getId(), 1000000);
+        sabanaPayRoll.depositToEmployee(s2.getId(), 400000);
+        sabanaPayRoll.depositToEmployee(c1.getId(), 500000);
+        sabanaPayRoll.depositToEmployee(c2.getId(), 6000000);
 
-
+        assertEquals(sabanaPayRoll.calculateAllEmployeesBalance(),1.2079E7);
+    }
+**/
 }

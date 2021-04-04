@@ -14,6 +14,7 @@ public class Savings extends BankAccount {
 
     @Override
     public boolean deposit(double amount){
+
         if(amount>DEPOSIT_DISCOUNT) {
             if (super.deposit(amount-DEPOSIT_DISCOUNT)){
                 annualInterests = annualInterests+ (amount-DEPOSIT_DISCOUNT)*ANNUAL_INTEREST_RATE;

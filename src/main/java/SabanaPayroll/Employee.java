@@ -54,4 +54,8 @@ public abstract class Employee {
         }
         return false;
     }
+
+    public BankAccount getBankAccount(){
+        return this.account;
+    }
 }

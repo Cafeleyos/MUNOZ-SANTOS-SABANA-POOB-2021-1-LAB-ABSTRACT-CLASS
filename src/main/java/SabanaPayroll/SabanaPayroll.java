@@ -80,4 +80,49 @@ public class SabanaPayroll {
         }
         System.out.println("-----------");
     }
+
+    public boolean depositToEmployee(UUID uuid, double amount){
+        boolean result = false;
+        for(Department d: departments) {
+            for(Employee e: d.getEmployees()) {
+                if (e.getId() == uuid) {
+                    if(e.getBankAccount() == null) {
+                        break;
+                    }
+                    result = (e.getBankAccount().deposit(amount));
+                }
+            }
+        }
+        return result;
+    }
+
+    public double calculateEmployeeBalance(UUID uuid){
+        double result = -1;
+        for(Department d: departments) {
+            for(Employee e: d.getEmployees()) {
+                if (e.getId() == uuid) {
+                    if(e.getBankAccount() == null) {
+                        break;
+                    }
+                    result = e.getBankAccount().getBalance();
+                }
+            }
+        }
+        return result;
+    }
+
+    public double calculateAllEmployeesBalance(){
+        double result = 0;
+        for(Department d: departments) {
+            for(Employee e: d.getEmployees()) {
+                if(e.getBankAccount()==null){
+                    break;
+                }
+                result += e.getBankAccount().getBalance();
+            }
+        }
+        return result;
+    }
+
+
 }
