@@ -15,7 +15,7 @@
 
 ## Parte IV - Clases Abstractas Integrando
 ### -Diagramas de secuencia
-  ![](img/calculateemployeesalary-sequence-diagram.png)
+  ![](img/calculateemployeebalance-sequence-diagram.png)
   ![](img/calculatedallemployeesbalance-sequence-diagram.png)
   ![](img/deposittoemplotee-sequence-diagram.png)
 ### -Diagrama de clases
