@@ -133,8 +133,8 @@ public class SabanaNominaTest {
     @Test
     public void shouldDepositToAnEmployeeIfSatisfiesTheAccountRequirements() {
         resetDeposits();
-        assertTrue(sabanaPayRoll.depositToEmployee(e2h.getId(), 1200000));
-        assertEquals(sabanaPayRoll.calculateEmployeeBalance(e2h.getId()),1198000.0);
+        assertTrue(sabanaPayRoll.depositToEmployee(e1h.getId(), 1200000));
+        assertEquals(sabanaPayRoll.calculateEmployeeBalance(e1h.getId()),1198000.0);
 
         assertTrue(sabanaPayRoll.depositToEmployee(s2.getId(), 400000));
         assertEquals(sabanaPayRoll.calculateEmployeeBalance(s2.getId()),395000.0);
