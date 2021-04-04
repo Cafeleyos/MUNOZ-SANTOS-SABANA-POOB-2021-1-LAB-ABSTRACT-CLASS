@@ -16,3 +16,8 @@
 
 
 ## Parte V - Clases Abstractas Diseñando en un contexto
+
+##`Diagrama de clases`
+![](img/niversitybenefit-class-diagram .png)
+
+
