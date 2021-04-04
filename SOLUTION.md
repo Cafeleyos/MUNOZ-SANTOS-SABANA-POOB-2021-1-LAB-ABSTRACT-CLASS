@@ -28,9 +28,7 @@
 
 ###-Diagrama de clases
 ![](img/niversitybenefit-class-diagram .png)
-###-Diagramas de secuencia
+###-Diagramas de secuencia del método de `VacationBenefit`
 ![](img/retirewforvacations-sequence-diagram.png)
+###-Diagramas de secuencia del método de `CourseBenefit`
 ![](img/coursesBenefit-sequence-diagram.png)
-![](img/SabanaNominaTest.png)
-
-
