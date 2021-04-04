@@ -10,7 +10,7 @@ public class EmployeeForSalary extends Employee {
     private double salary;
 
     /**
-     * Constructor for specifying name, lastname, department and initial salary.
+     * Constructor for specifying name, lastname, department and hours of work.
      */
     public EmployeeForSalary(String name, String lastname, Department department, double salary) {
         super(name,lastname,department);
@@ -18,7 +18,9 @@ public class EmployeeForSalary extends Employee {
         this.salary=calculateSalary();
 
     }
-
+    /**
+     * Constructor for specifying name, lastname, department, hours of work and bank account.
+     */
     public EmployeeForSalary(String name, String lastname, Department department, double salary,BankAccount account) {
         super(name,lastname,department);
         this.baseSalary = salary;

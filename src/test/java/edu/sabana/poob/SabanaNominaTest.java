@@ -122,6 +122,7 @@ public class SabanaNominaTest {
 
     @Test
     public void shouldGetBalanceOfAnEmployee() {
+        resetDeposits();
         assertTrue(sabanaPayRoll.depositToEmployee(e1h.getId(), 1200000));
         assertEquals(sabanaPayRoll.calculateEmployeeBalance(e1h.getId()), 1198000.0);
         assertTrue(sabanaPayRoll.depositToEmployee(e1h.getId(), 20000));
@@ -131,7 +132,7 @@ public class SabanaNominaTest {
 
     @Test
     public void shouldDepositToAnEmployeeIfSatisfiesTheAccountRequirements() {
-
+        resetDeposits();
         assertTrue(sabanaPayRoll.depositToEmployee(e2h.getId(), 1200000));
         assertEquals(sabanaPayRoll.calculateEmployeeBalance(e2h.getId()),1198000.0);
 
@@ -146,9 +147,10 @@ public class SabanaNominaTest {
     }
 
 
-/**
+
     @Test
     public void shouldGetCorrectlyTheBalanceOfAllEmployees(){
+        resetDeposits();
         sabanaPayRoll.depositToEmployee(e1h.getId(), 1200000);
         sabanaPayRoll.depositToEmployee(e2h.getId(), 3000000);
         sabanaPayRoll.depositToEmployee(s1.getId(), 1000000);
@@ -158,5 +160,13 @@ public class SabanaNominaTest {
 
         assertEquals(sabanaPayRoll.calculateAllEmployeesBalance(),1.2079E7);
     }
-**/
+
+
+    public void resetDeposits(){
+        a1.clearAccount(12345);
+        a2.clearAccount(12345);
+        a3.clearAccount(12345);
+        a4.clearAccount(12345);
+        a5.clearAccount(12345);
+    }
 }

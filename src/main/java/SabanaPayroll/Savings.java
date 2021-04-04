@@ -6,12 +6,18 @@ public class Savings extends BankAccount {
     public final static double ANNUAL_INTEREST_RATE  = 0.01;
     private double annualInterests =0;
 
-
+    /**
+     * @return the actual deposit discount.
+     */
     @Override
     public double getDepositDiscount() {
         return DEPOSIT_DISCOUNT;
     }
-
+    /**
+     * If the amount to be deposited is greater than the deposit discount then it will do it, if not, the operation isn´t completed.
+     * @param amount amount to deposit.
+     * @return If is was successful.
+     */
     @Override
     public boolean deposit(double amount){
 
@@ -23,14 +29,17 @@ public class Savings extends BankAccount {
         }
         return false;
     }
-    
+
+    /**
+     * @return the interests of the whole year
+     */
     public double getAnnualInterests() {
         return this.annualInterests;
     }
      /**
-     * Calcula el porcentaje de intereses y los deposita en la cuenta sin ningun descuento.
+     * Calculate the interest percentage and deposit it in the account without any discount.
      * <br><br>
-     * @return el porcentaje depositado en la cuenta.
+     * @return the percentage deposited into the account.
      */
     public double depositMonthlyInterest(){
         if (super.deposit(annualInterests/12)){

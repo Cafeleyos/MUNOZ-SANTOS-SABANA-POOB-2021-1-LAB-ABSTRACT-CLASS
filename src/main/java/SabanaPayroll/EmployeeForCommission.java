@@ -15,7 +15,9 @@ public class EmployeeForCommission extends Employee{
         super(name, lastname, department);
         this.sales = sales;
     }
-
+    /**
+     * Constructor for specifying name, lastname, department, number of sales and bank account
+     */
     public EmployeeForCommission(String name, String lastname, Department department, int sales, BankAccount account) {
         super(name, lastname, department);
         this.sales = sales;

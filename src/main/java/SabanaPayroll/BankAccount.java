@@ -1,5 +1,8 @@
 package SabanaPayroll;
 
+/**
+ * Represents a bank account.
+ */
 public abstract class BankAccount {
 
     public static final int TAX_4_1000 = 4;
@@ -7,29 +10,29 @@ public abstract class BankAccount {
     private double balance;
 
     /**
-     * Inicializa una cuenta.
+     * Initialize an account.
      */
     public BankAccount() {
         this.balance = 0;
     }
 
     /**
-     * Obtiene el porcentaje del deposito.
+     * Gets the discount of the deposits
      *
      * @return
      */
     public abstract double getDepositDiscount();
 
     /**
-     * Depositar una cantidad de dinero en la cuenta.
+     * Deposit an amount of money in the account
      * <br><br>
-     * - El dinero a depositar debe ser mayor que el descuento que aplica el banco por defecto, de no ser así, la
-     * operación no puede realizarse.<br>
-     * - Si el monto a depositar es correcto, debe realizar el descuento y cambiar el valor del balance.
+     * - The money to be deposited must be greater than the discount applied by the bank by default, if not, the
+     *   operation cannot be performed. <br>
+     * - If the amount to be deposited is correct, the discount is applied and the balance value is changed.
      * <br><br>
      *
-     * @param amount El monto a depositar.
-     * @return Si la operación fue exitosa.
+     * @param amount amount to deposit.
+     * @return if the operation was successful.
      */
     public boolean deposit(double amount) {
         if (amount>0) {
@@ -40,15 +43,12 @@ public abstract class BankAccount {
     }
 
     /**
-     * Realizar un retiro.
+     * Make a withdraw
      * <br><br>
-     * - Si el monto a retirar sumado al impuesto del 4 x 1000 es inferior al balance de la cuenta, la operación no
-     * puede realizarse. <br>
-     * - De ser posible, debe realizarse el descuento del balance del monto a retirar y del impuesto.
-     * <br><br>
+     * - If the amount to withdraw added to the 4 x 1000 tax is less than the account balance, the operation cannot be done <br>
      *
-     * @param amount El monto a retirar.
-     * @return Si la operación fue exitosa.
+     * @param amount amount to withdraw
+     * @return if the operation was successful.
      */
     public boolean withdraw(double amount) {
         if (amount<this.balance) {
@@ -61,19 +61,44 @@ public abstract class BankAccount {
     }
 
     /**
-     * Devuelve el balance de la cuenta
+     * returns the balance of the account.
      *
-     * @return El balabce
+     * @return the balance
      */
     public double getBalance() {
         return balance;
     }
 
+    /**
+     * Sets the balance to the value given
+     * @param balance to be replaced
+     */
     private void setBalance(double balance) {
         this.balance = balance;
     }
 
+    /**
+     * Calculates the value of the 4X1000 tax of a given amount.
+     * @param amount to calculate.
+     * @return tax applied to the amount
+     */
     public double calculateTax(double amount){
         return (amount*TAX_4_1000)/1000;
+    }
+
+    /**
+     * Method done only for test purposes
+     * Sets the balance to 0
+     * @param adminPassword for performing the operation is necessary the correct password.
+     * @return If it was possible according to the password.
+     */
+
+    public boolean clearAccount(double adminPassword) {
+        boolean result = false;
+        if (adminPassword == 12345) {
+            this.balance = 0;
+            result = true;
+        }
+        return false;
     }
 }

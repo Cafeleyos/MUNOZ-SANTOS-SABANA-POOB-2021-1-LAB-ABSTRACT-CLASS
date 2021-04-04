@@ -47,6 +47,11 @@ public abstract class Employee {
                 this.getClass().getSimpleName().equals("EmployeeForHours") ? "hours" : this.getClass().getSimpleName().equals("EmployeeForSalary") ? "salary" : "commissions");
     }
 
+    /**
+     * adds an specific account if the employee does not have one already defined.
+     * @param account to be added.
+     * @return if was successful
+     */
     public boolean addAccount(BankAccount account) {
         if(this.account==null){
             this.account = account;
@@ -55,6 +60,9 @@ public abstract class Employee {
         return false;
     }
 
+    /**
+     * @return bank account associated.
+     */
     public BankAccount getBankAccount(){
         return this.account;
     }
