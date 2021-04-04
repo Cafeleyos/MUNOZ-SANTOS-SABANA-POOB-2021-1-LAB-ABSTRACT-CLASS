@@ -10,9 +10,9 @@
   ![](img/EmployeeTest.png)
 
 ## Parte IV - Clases Abstractas Integrando
-###-Diagramas de secuencia
+### *Diagramas de secuencia
 
-  ![](img/calculateemployeesalary-class-diagram.png)
+  ![](img/calculateemployeesalary-sequence-diagram.png)
 
 ## Parte V - Clases Abstractas Diseñando en un contexto
 
