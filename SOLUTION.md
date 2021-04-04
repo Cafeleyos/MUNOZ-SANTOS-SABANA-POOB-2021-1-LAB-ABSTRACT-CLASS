@@ -10,15 +10,14 @@
   ![](img/sabanapayroll-class-diagram-act.png)
   ![](img/EmployeeTest.png)
 
-## Parte III - Clases Abstractas Implementando en un contexto
-
-
 ## Parte IV - Clases Abstractas Integrando
+###-Diagramas de secuencia
 
+  ![](img/calculateemployeesalary-class-diagram.png)
 
 ## Parte V - Clases Abstractas Diseñando en un contexto
 
-##`Diagrama de clases`
+###`Diagrama de clases`
 ![](img/niversitybenefit-class-diagram .png)
 
 
